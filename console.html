@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Dingfelder Enterprises — CI Console</title>
+  <link rel="stylesheet" href="assets/de.css"/>
+</head>
+<body>
+
+<header class="de-topbar">
+  <div class="de-inner">
+    <div class="de-brand">
+      <div class="de-mark" aria-hidden="true"></div>
+      <div class="de-brandText">
+        <b>Dingfelder Enterprises</b>
+        <small>CI Console</small>
+      </div>
+    </div>
+    <nav class="de-nav">
+      <a class="de-pill" href="index.html">Home</a>
+      <a class="de-pill" href="kpis.html">KPI Manager</a>
+      <a class="de-pill" href="artifacts.html">Saved Work</a>
+      <a class="de-pill" href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="de-wrap">
+  <div class="de-inner">
+
+    <div class="de-trust">
+      WE WILL NEVER SELL OR VIEW YOUR DATA.<br/>
+      YOUR INFORMATION IS PRIVATE AND YOU MAINTAIN OWNERSHIP THROUGH YOUR ENTIRE EXPERIENCE USING OUR FREE PRODUCT VERSIONS
+    </div>
+
+    <div class="de-grid">
+      <section class="de-card de-col-7">
+        <div class="de-pad">
+          <div class="de-sectionTitle">
+            <h2>Method</h2>
+            <small>Select a workflow</small>
+          </div>
+
+          <div class="de-row">
+            <select class="de-field" id="methodSelect" style="max-width:520px;">
+              <option value="pareto_actions">Pareto → Action Plan</option>
+              <option value="a3">A3 Problem Solving</option>
+              <option value="run_insights">KPI Run Chart → Insight Summary</option>
+              <option value="5whys">5 Whys → Countermeasures</option>
+              <option value="pdca">PDCA Worksheet</option>
+            </select>
+
+            <button class="de-btn primary" id="btnGenerate">Generate (Stub)</button>
+            <button class="de-btn" id="btnSave">Save Artifact (Stub)</button>
+          </div>
+
+          <p class="de-muted" style="margin-top:10px;">
+            This page is wired for UI-first development. When SSL is ready, we’ll connect “Generate” to a Netlify Function
+            that returns chart-ready JSON + worksheet fields (Structured Outputs).
+          </p>
+        </div>
+      </section>
+
+      <section class="de-card de-col-5">
+        <div class="de-pad">
+          <div class="de-sectionTitle">
+            <h2>KPIs</h2>
+            <small>Select inputs</small>
+          </div>
+
+          <div class="de-kpiList" id="kpiList">
+            <div class="de-kpiItem">
+              <div>
+                <b>Press #3 Downtime</b>
+                <small>minutes • daily sum • lower is better</small>
+              </div>
+              <input type="checkbox" />
+            </div>
+            <div class="de-kpiItem">
+              <div>
+                <b>Defects — Label Wrinkles</b>
+                <small>count • shift total • lower is better</small>
+              </div>
+              <input type="checkbox" />
+            </div>
+            <div class="de-kpiItem">
+              <div>
+                <b>OEE — Line 2</b>
+                <small>% • daily average • higher is better</small>
+              </div>
+              <input type="checkbox" />
+            </div>
+            <div class="de-kpiItem">
+              <div>
+                <b>Changeover Time</b>
+                <small>minutes • event • lower is better</small>
+              </div>
+              <input type="checkbox" />
+            </div>
+          </div>
+
+          <div class="de-row" style="margin-top:12px;">
+            <a class="de-btn small" href="kpis.html">Manage KPIs</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="de-card de-col-12">
+        <div class="de-pad">
+          <div class="de-sectionTitle">
+            <h2>Outputs</h2>
+            <small>Charts + materials</small>
+          </div>
+
+          <div class="de-grid" style="margin-top:0;">
+            <div class="de-card de-col-7">
+              <div class="de-pad">
+                <b style="display:block; margin-bottom:8px;">Chart Panel (placeholder)</b>
+                <div class="de-muted" style="border:1px dashed rgba(32,48,66,.85); border-radius:14px; padding:16px;">
+                  When wired: render Pareto / Run / Control charts here from returned JSON.
+                </div>
+              </div>
+            </div>
+
+            <div class="de-card de-col-5">
+              <div class="de-pad">
+                <b style="display:block; margin-bottom:8px;">Action Plan / Worksheet (placeholder)</b>
+                <div class="de-muted" style="border:1px dashed rgba(32,48,66,.85); border-radius:14px; padding:16px;">
+                  When wired: AI returns structured fields (problem, root causes, countermeasures, verification).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="stubLog" class="de-muted" style="margin-top:12px;"></div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="de-footer">
+      <div>© Dingfelder Enterprises</div>
+      <div class="de-row" style="gap:10px;">
+        <a href="privacy.html">Privacy Notice</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="data-ownership.html">Data Ownership Promise</a>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<script src="assets/app.js"></script>
+<script>
+  const log = document.getElementById("stubLog");
+  document.getElementById("btnGenerate").addEventListener("click", ()=>{
+    const m = document.getElementById("methodSelect").value;
+    log.textContent = `Generate requested (stub): method=${m}. Next: wire to /api/ci-generate.`;
+  });
+  document.getElementById("btnSave").addEventListener("click", ()=>{
+    log.textContent = "Save artifact (stub). Next: persist to database (Supabase/Firebase/etc.) scoped by user/org.";
+  });
+</script>
+</body>
+</html>

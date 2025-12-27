@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Dingfelder Enterprises — Productivity Tools</title>
+  <link rel="stylesheet" href="assets/de.css"/>
+</head>
+<body>
+
+<header class="de-topbar">
+  <div class="de-inner">
+    <div class="de-brand">
+      <div class="de-mark" aria-hidden="true"></div>
+      <div class="de-brandText">
+        <b>Dingfelder Enterprises</b>
+        <small>Productivity Tools • Continuous Improvement Console</small>
+      </div>
+    </div>
+    <nav class="de-nav">
+      <a class="de-pill" href="console.html">CI Console</a>
+      <a class="de-pill" href="kpis.html">KPI Manager</a>
+      <a class="de-pill" href="artifacts.html">Saved Work</a>
+      <a class="de-pill" href="privacy.html">Privacy</a>
+      <a class="de-pill" href="terms.html">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<main class="de-wrap">
+  <div class="de-inner">
+
+    <div class="de-hero">
+      <div style="flex:1 1 620px;">
+        <h1 class="de-h1">Productivity Tools</h1>
+        <p class="de-sub">
+          A practical, on-page Continuous Improvement workbench: build KPIs, chart performance,
+          draft A3/PDCA materials, and save artifacts with an audit trail—designed for real operations.
+        </p>
+
+        <div style="margin-top:14px;" class="de-row">
+          <a class="de-btn primary" href="console.html">Open CI Console</a>
+          <a class="de-btn" href="kpis.html">Create KPIs</a>
+          <a class="de-btn" href="data-ownership.html">Data Ownership Promise</a>
+        </div>
+
+        <div style="margin-top:16px;" class="de-trust">
+          WE WILL NEVER SELL OR VIEW YOUR DATA.<br/>
+          YOUR INFORMATION IS PRIVATE AND YOU MAINTAIN OWNERSHIP THROUGH YOUR ENTIRE EXPERIENCE USING OUR FREE PRODUCT VERSIONS
+        </div>
+
+        <p class="de-muted" style="margin-top:10px;">
+          AI features (when enabled) will generate outputs from the inputs you provide. You remain responsible for verifying results before operational use.
+        </p>
+      </div>
+
+      <div class="de-card" style="flex:1 1 360px; min-width:320px;">
+        <div class="de-pad">
+          <div class="de-sectionTitle">
+            <h2>Quick Start</h2>
+            <small>v1 scaffold</small>
+          </div>
+          <ol class="de-muted" style="margin:0; padding-left:18px; line-height:1.7;">
+            <li>Create KPI definitions</li>
+            <li>Add measurements (manual for now)</li>
+            <li>Select a CI method</li>
+            <li>Generate charts + action plan</li>
+            <li>Save the artifact</li>
+          </ol>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="de-badge">Audit-ready</span>
+            <span class="de-badge">Static-first</span>
+            <span class="de-badge">Backend-safe AI</span>
+            <span class="de-badge">Customer ownership</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="de-footer">
+      <div>© Dingfelder Enterprises</div>
+      <div class="de-row" style="gap:10px;">
+        <a href="privacy.html">Privacy Notice</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="data-ownership.html">Data Ownership Promise</a>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<!-- Teaser strip -->
+<section class="de-teaser" id="deTeaser">
+  <div class="de-inner">
+    <div>
+      <b>Would you like this package customized for your own company, with unlimited users?</b>
+      <small>Company branding • Custom KPIs • Role permissions • Templates • Private deployment</small>
+    </div>
+    <div class="de-row">
+      <button class="de-btn primary small" data-open-customize>Customize My Company</button>
+      <button class="de-btn small" data-teaser-hide>Not now</button>
+    </div>
+  </div>
+</section>
+
+<!-- Customize modal -->
+<div class="de-modalMask de-hide" id="customizeModal" role="dialog" aria-modal="true" aria-label="Customize package">
+  <div class="de-modal">
+    <div class="de-modalHeader">
+      <b>Company Package Request</b>
+      <button class="de-btn small" data-close-modal="customizeModal">Close</button>
+    </div>
+    <div class="de-modalBody">
+      <p class="de-muted" style="margin-top:0;">
+        This request form is a local stub right now. We’ll wire it to Netlify Forms or a serverless endpoint next.
+      </p>
+      <form id="deCustomizeForm">
+        <div class="de-modalGrid">
+          <div>
+            <label class="de-muted">Your Name</label>
+            <input class="de-field" name="name" required />
+          </div>
+          <div>
+            <label class="de-muted">Email</label>
+            <input class="de-field" name="email" type="email" required />
+          </div>
+          <div>
+            <label class="de-muted">Company</label>
+            <input class="de-field" name="company" required />
+          </div>
+          <div>
+            <label class="de-muted">Approx. Users</label>
+            <input class="de-field" name="users" placeholder="e.g., 25 / 200 / unlimited" />
+          </div>
+          <div style="grid-column:1/-1;">
+            <label class="de-muted">What do you want customized?</label>
+            <textarea class="de-field" name="notes" rows="4" placeholder="KPIs, workflows, reports, terminology, SOP templates, dashboards..."></textarea>
+          </div>
+        </div>
+        <div class="de-row" style="margin-top:12px;">
+          <button class="de-btn primary" type="submit">Submit Request</button>
+          <span class="de-muted" id="deCustomizeMsg"></span>
+        </div>
+      </form>
+    </div>
+    <div class="de-modalFooter">
+      <a class="de-btn" href="privacy.html">Privacy</a>
+      <a class="de-btn" href="terms.html">Terms</a>
+    </div>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

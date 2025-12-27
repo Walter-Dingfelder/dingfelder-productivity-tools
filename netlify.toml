@@ -1,0 +1,35 @@
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy.html"
+  status = 200
+
+[[redirects]]
+  from = "/terms"
+  to = "/terms.html"
+  status = 200
+
+[[redirects]]
+  from = "/data-ownership"
+  to = "/data-ownership.html"
+  status = 200
+
+[[redirects]]
+  from = "/console"
+  to = "/console.html"
+  status = 200
+
+[[redirects]]
+  from = "/kpis"
+  to = "/kpis.html"
+  status = 200
+
+[[redirects]]
+  from = "/artifacts"
+  to = "/artifacts.html"
+  status = 200
