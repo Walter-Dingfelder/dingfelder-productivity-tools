@@ -1,0 +1,13 @@
+{
+  "name": "dingfelder-productivity-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static CI tools + Netlify Functions",
+  "type": "commonjs",
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  },
+  "engines": {
+    "node": "18"
+  }
+}
