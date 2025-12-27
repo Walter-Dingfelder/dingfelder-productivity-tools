@@ -18,12 +18,21 @@
       </div>
     </div>
     <nav class="de-nav">
+    <div class="de-navLinks">
+
       <a class="de-pill" href="console.html">CI Console</a>
       <a class="de-pill" href="kpis.html">KPI Manager</a>
       <a class="de-pill" href="artifacts.html">Saved Work</a>
       <a class="de-pill" href="privacy.html">Privacy</a>
       <a class="de-pill" href="terms.html">Terms</a>
-    </nav>
+    
+    </div>
+    <div class="de-auth" id="deAuthArea">
+      <button class="de-pill de-pill--ghost" id="deLoginBtn" type="button">Log in</button>
+      <button class="de-pill de-pill--ghost" id="deLogoutBtn" type="button" style="display:none;">Log out</button>
+      <span class="de-authEmail" id="deAuthEmail" style="display:none;"></span>
+    </div>
+</nav>
   </div>
 </header>
 
@@ -150,6 +159,7 @@
   </div>
 </div>
 
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script src="assets/app.js"></script>
 </body>
 </html>

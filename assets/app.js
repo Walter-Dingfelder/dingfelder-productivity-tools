@@ -62,3 +62,87 @@
     });
   }
 })();
+
+
+/* ============================================================
+   Netlify Identity (optional)
+   - Shows login status in header if #deAuthArea exists
+   - Handles invite_token links by opening the widget
+   ============================================================ */
+(function(){
+  function q(id){ return document.getElementById(id); }
+
+  function setAuthUI(user){
+    var loginBtn = q('deLoginBtn');
+    var logoutBtn = q('deLogoutBtn');
+    var emailEl = q('deAuthEmail');
+    if(!loginBtn || !logoutBtn || !emailEl) return;
+
+    if(user){
+      loginBtn.style.display = 'none';
+      logoutBtn.style.display = '';
+      emailEl.style.display = '';
+      emailEl.textContent = user.email || (user.user_metadata && user.user_metadata.full_name) || 'Signed in';
+    }else{
+      loginBtn.style.display = '';
+      logoutBtn.style.display = 'none';
+      emailEl.style.display = 'none';
+      emailEl.textContent = '';
+    }
+  }
+
+  function currentUser(){
+    try{
+      return window.netlifyIdentity && window.netlifyIdentity.currentUser && window.netlifyIdentity.currentUser();
+    }catch(e){ return null; }
+  }
+
+  // Scoped localStorage helper (anon vs per-user)
+  function scopeKey(key){
+    var user = currentUser();
+    var scope = user && user.email ? ('user:' + user.email.toLowerCase()) : 'anon';
+    return 'de:' + scope + ':' + key;
+  }
+  window.DEStore = {
+    key: scopeKey,
+    get: function(key, fallback){
+      try{
+        var v = localStorage.getItem(scopeKey(key));
+        return v === null ? fallback : JSON.parse(v);
+      }catch(e){ return fallback; }
+    },
+    set: function(key, value){
+      try{ localStorage.setItem(scopeKey(key), JSON.stringify(value)); }catch(e){}
+    },
+    remove: function(key){
+      try{ localStorage.removeItem(scopeKey(key)); }catch(e){}
+    },
+    userEmail: function(){
+      var u = currentUser();
+      return u && u.email ? u.email : null;
+    }
+  };
+
+  // Identity wiring
+  if(window.netlifyIdentity){
+    window.netlifyIdentity.on('init', function(user){ setAuthUI(user); });
+    window.netlifyIdentity.on('login', function(user){ setAuthUI(user); window.netlifyIdentity.close(); });
+    window.netlifyIdentity.on('logout', function(){ setAuthUI(null); });
+    window.netlifyIdentity.init();
+
+    var loginBtn = q('deLoginBtn');
+    var logoutBtn = q('deLogoutBtn');
+    if(loginBtn) loginBtn.addEventListener('click', function(){ window.netlifyIdentity.open('login'); });
+    if(logoutBtn) logoutBtn.addEventListener('click', function(){ window.netlifyIdentity.logout(); });
+
+    // If the site is opened with an invite token, open signup flow
+    if(typeof window.location !== 'undefined' && window.location.hash && window.location.hash.indexOf('invite_token=') !== -1){
+      // Give the widget a tick to init, then open
+      setTimeout(function(){ window.netlifyIdentity.open('signup'); }, 250);
+    }
+  }else{
+    // No Identity widget loaded; still render anon state
+    setAuthUI(null);
+  }
+})();
+
